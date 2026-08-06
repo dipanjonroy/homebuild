@@ -3,7 +3,7 @@
 :root {
   --background: #ffffff;
   --foreground: #111111;
-  --helper: #F7F6F9;
+  --helper: #f7f6f9;
 }
 
 @theme inline {
@@ -14,9 +14,47 @@
   --font-heading: var(--font-manrope);
 }
 
-
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-inter);
+}
+
+/* Background Color */
+@utility white-bg {
+  @apply bg-(--color-background);
+}
+
+@utility black-bg {
+  @apply bg-(--color-foreground);
+}
+
+/* Typography */
+@utility white-text {
+  @apply text-(--color-background);
+}
+@utility black-text {
+  @apply text-(--color-foreground);
+}
+
+/* Border color */
+@utility white-border {
+  @apply text-(--color-background);
+}
+@utility black-border {
+  @apply text-(--color-foreground);
+}
+
+
+@utility flex-center-between {
+  @apply flex items-center justify-between;
+}
+@utility flex-center {
+  @apply flex items-center justify-center;
+}
+@utility flex-col-center {
+  @apply flex flex-col items-center justify-center;
+}
+@utility inline-flex-center {
+  @apply inline-flex items-center justify-center;
 }

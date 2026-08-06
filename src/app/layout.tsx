@@ -1,6 +1,7 @@
 import { Manrope, Inter } from "next/font/google";
 import "./globals.css";
 import type { Metadata } from "next";
+import Header from "@/components/header";
 
 const interFont = Inter({
   variable: "--font-inter",
@@ -29,7 +30,11 @@ export default function RootLayout({
       lang="en"
       className={`${interFont.variable} ${manropeFont.variable} antialiased`}
     >
-      <body>{children}</body>
+      <body>
+        {/* Header Section */}
+        <Header />
+        {children}
+      </body>
     </html>
   );
 }
