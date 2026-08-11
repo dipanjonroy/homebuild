@@ -1,7 +1,8 @@
 import { Manrope, Inter } from "next/font/google";
 import "./globals.css";
 import type { Metadata } from "next";
-import Header from "@/components/header";
+import Header from "@/components/layouts/header";
+import ModalLayout from "@/components/modals/ModalLayout";
 
 const interFont = Inter({
   variable: "--font-inter",
@@ -34,6 +35,7 @@ export default function RootLayout({
         {/* Header Section */}
         <Header />
         {children}
+        <ModalLayout/>
       </body>
     </html>
   );

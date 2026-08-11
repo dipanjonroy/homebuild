@@ -46,6 +46,7 @@ body {
 }
 
 
+/* Border color */
 @utility flex-center-between {
   @apply flex items-center justify-between;
 }
@@ -57,4 +58,10 @@ body {
 }
 @utility inline-flex-center {
   @apply inline-flex items-center justify-center;
+}
+@utility flex-end {
+  @apply flex items-end justify-end
+}
+@utility flex-start {
+  @apply flex items-start justify-start
 }

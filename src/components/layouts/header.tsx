@@ -1,9 +1,7 @@
-import { useMobileMenuStore } from "@/store/MobileMenuStore";
-import Logo from "./Logo";
-import Mainmenu from "./menus/Mainmenu";
-import MobileMenu from "./menus/MobileMenu";
-import Mainbutton from "./ui/buttons/Mainbutton";
-import MobileMenuButton from "./ui/buttons/MobileMenuButton";
+import Logo from "../Logo";
+import Mainmenu from "../menus/Mainmenu";
+import Mainbutton from "../ui/buttons/Mainbutton";
+import MobileMenuButton from "../ui/buttons/MobileMenuButton";
 
 export default function Header() {
   return (
@@ -28,7 +26,6 @@ export default function Header() {
         {/* Mobile Menu */}
         <div className="lg:hidden overflow-hidden">
           <MobileMenuButton />
-          <MobileMenu />
         </div>
       </div>
     </div>
