@@ -30,6 +30,9 @@ body {
 }
 
 /* Typography */
+@utility heading {
+  font-family: var(--font-heading)
+}
 @utility white-text {
   @apply text-(--color-background);
 }
@@ -39,10 +42,10 @@ body {
 
 /* Border color */
 @utility white-border {
-  @apply text-(--color-background);
+  @apply border-(--color-background);
 }
 @utility black-border {
-  @apply text-(--color-foreground);
+  @apply border-(--color-foreground);
 }
 
 
@@ -64,4 +67,9 @@ body {
 }
 @utility flex-start {
   @apply flex items-start justify-start
+}
+
+/* Width */
+@utility site-container {
+  @apply w-[90%] max-w-360 mx-auto
 }
