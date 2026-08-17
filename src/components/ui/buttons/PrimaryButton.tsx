@@ -14,12 +14,12 @@ export default function PrimaryButton({
   onClick,
 }: MainButtonProps) {
   const btnClass =
-    variant === "black" ? "black-bg white-text" : "white-bg black-text";
+    variant === "black" ? "black-bg white-text" : variant === "gray" ? "bg-gray-200 black-text" : "white-bg black-text";
   const iconClass =
     variant === "black" ? "white-bg black-text" : "black-bg white-text";
   return (
     <button
-      className={`${btnClass} ps-6 pe-1.5 py-2 2xl:py-2.5 rounded-full inline-flex-center gap-2 group cursor-pointer`}
+      className={`${btnClass} ps-6 pe-1.5 py-2 rounded-full inline-flex-center gap-2 group cursor-pointer`}
       onClick={onClick}
     >
       <span className="relative h-6 overflow-hidden">

@@ -1,6 +1,7 @@
 import { Manrope, Inter } from "next/font/google";
 import "./globals.css";
 import ModalLayout from "@/components/modals/ModalLayout";
+import ToastContainer from "@/components/toast/ToastContainer";
 
 const interFont = Inter({
   variable: "--font-inter",
@@ -25,6 +26,7 @@ export default function RootLayout({
       <body>
         {children}
         <ModalLayout />
+        <ToastContainer/>
       </body>
     </html>
   );
