@@ -17,6 +17,7 @@ type SelectProps <T>= {
   placeholder: string;
   options: OptionType<T>[];
   value: T;
+  error?:boolean;
   onChange: (value:T)=>void;
 };
 
@@ -27,6 +28,7 @@ export default function Select<T>({
   icon: Icon,
   options,
   value,
+  error,
   onChange
 }: SelectProps<T>) {
   const [isOpen, setIsopen] = useState<boolean>(false);
@@ -36,7 +38,7 @@ export default function Select<T>({
   const selectedOption = options.find((option)=> option.value === value);
 
   // Close dropdown when clicking outside
-  useClickOutsideClose(selectRef, setIsopen);
+  useClickOutsideClose(selectRef, ()=>setIsopen(false));
 
   // Handle Select function
   const handleSelect = (option: OptionType<T>) => {
@@ -57,7 +59,7 @@ export default function Select<T>({
       {/* Select Button */}
       <button
         onClick={() => setIsopen(!isOpen)}
-        className={`relative w-full border border-gray-300 rounded-md ${Icon ? "ps-10 pe-3" : "px-3"} py-3 black-text text-sm flex-center-between cursor-pointer`}
+        className={`relative w-full border ${error ? "border-red-500" :"border-gray-300"} rounded-md ${Icon ? "ps-10 pe-3" : "px-3"} py-3 black-text text-sm flex-center-between cursor-pointer`}
       >
         <span className={`${selectedOption ? "back-text" : "text-gray-400"}`}>{selectedOption?.label || placeholder}</span>
         <span className={`text-base transition-transform duration-200 ${isOpen ? "-rotate-180" : ""}`}>

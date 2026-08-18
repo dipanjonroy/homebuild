@@ -1,3 +1,5 @@
+const emailRegEx = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 class FormValidator {
   isEmpty(value:unknown):boolean{
     if(value === undefined || value === null) return true;
@@ -7,8 +9,12 @@ class FormValidator {
 
     return false;
   }
+
+  isEmail(value:string){
+    return emailRegEx.test(value)
+  }
 };
 
 const formValidator =  new FormValidator();
 
-export const {isEmpty} = formValidator;
+export const {isEmpty,isEmail} = formValidator;

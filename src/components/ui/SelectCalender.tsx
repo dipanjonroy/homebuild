@@ -11,6 +11,7 @@ type SelectCalenderTypes = {
   required?: boolean;
   placeholder: string;
   value: Date | null;
+  error?: boolean;
   onChange: (date: Date) => void;
 };
 
@@ -19,6 +20,7 @@ export default function SelectCalender({
   required,
   placeholder,
   value,
+  error,
   onChange,
 }: SelectCalenderTypes) {
   const [isOpen, setIsopen] = useState<boolean>(false);
@@ -26,7 +28,7 @@ export default function SelectCalender({
   const calenderRef = useRef<HTMLDivElement>(null);
 
   // Close calender outside click
-  useClickOutsideClose(calenderRef, setIsopen);
+  useClickOutsideClose(calenderRef, () => setIsopen(false));
 
   return (
     <div ref={calenderRef} className="w-full relative">
@@ -41,7 +43,7 @@ export default function SelectCalender({
       {/* Select calender button */}
       <button
         onClick={() => setIsopen(!isOpen)}
-        className={`relative w-full border border-gray-300 rounded-md ps-10 pe-3 py-3 text-left ${value ? "black-text" : "text-gray-400"} text-sm cursor-pointer`}
+        className={`relative w-full border ${error ? "border-red-500" : "border-gray-300"} rounded-md ps-10 pe-3 py-3 text-left ${value ? "black-text" : "text-gray-400"} text-sm cursor-pointer`}
       >
         {value ? format(value, "dd MMMM yyyy") : placeholder}
         <span className="absolute top-1/2 -translate-y-1/2 left-3">

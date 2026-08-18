@@ -24,8 +24,11 @@ import Input from "../ui/Input";
 import PrimaryButton from "../ui/buttons/PrimaryButton";
 import Select from "../ui/Select";
 import SelectCalender from "../ui/SelectCalender";
-import { isEmpty } from "@/helpers/FormValidator";
+import { isEmail, isEmpty } from "@/helpers/FormValidator";
 import { toast } from "../toast/toast";
+import { alert } from "../alert/alert";
+import { format } from "date-fns";
+import { useAlertStore } from "@/store/AlertStore";
 
 interface MeetingFormTypes {
   personalDetails: {
@@ -149,7 +152,8 @@ export default function BookingModal() {
   const { closeModal } = useModalStore();
 
   const [step, setStep] = useState<number>(0);
-  const [submitted, setSubmitted] = useState<boolean>(false);
+
+  const { closeAlert } = useAlertStore();
 
   const [formData, setFormData] = useState<MeetingFormTypes>({
     personalDetails: {
@@ -194,31 +198,179 @@ export default function BookingModal() {
         [key]: value,
       },
     }));
+
+    setEmptyErrors((prev) => ({
+      ...prev,
+      [key]: false,
+    }));
   };
 
-  const handelSubmit = () => {
+  // Validate steps
+  const validateSteps = () => {
     const { personalDetails, projectDetails, meetingDetails } = formData;
-    // Validate form
-    if (isEmpty(personalDetails.fullName)) {
-      setEmptyErrors((prev) => ({
-        ...prev,
-        fullName: true,
-      }));
-      toast.error("Please enter your fullname.")
-      return;
+
+    if (step === 0) {
+      if (isEmpty(personalDetails.fullName)) {
+        setEmptyErrors((prev) => ({
+          ...prev,
+          fullName: true,
+        }));
+        toast.error("Fullname can't be empty.");
+
+        return false;
+      }
+
+      if (isEmpty(personalDetails.email)) {
+        setEmptyErrors((prev) => ({
+          ...prev,
+          email: true,
+        }));
+        toast.error("Email can't be empty.");
+
+        return false;
+      }
+
+      if (!isEmail(personalDetails.email)) {
+        setEmptyErrors((prev) => ({
+          ...prev,
+          email: true,
+        }));
+        toast.error("Please enter valid email.");
+
+        return false;
+      }
+
+      if (isEmpty(personalDetails.phone)) {
+        setEmptyErrors((prev) => ({
+          ...prev,
+          phone: true,
+        }));
+        toast.error("Phone can't be empty.");
+
+        return false;
+      }
     }
-    setSubmitted(true);
+
+    if (step === 1) {
+      if (isEmpty(projectDetails.projectType)) {
+        setEmptyErrors((prev) => ({
+          ...prev,
+          projectType: true,
+        }));
+        toast.error("Project type can't be empty.");
+
+        return false;
+      }
+
+      if (isEmpty(projectDetails.projectBudget)) {
+        setEmptyErrors((prev) => ({
+          ...prev,
+          projectBudget: true,
+        }));
+        toast.error("Please enter your budget.");
+
+        return false;
+      }
+
+      if (isEmpty(projectDetails.projectZipCode)) {
+        setEmptyErrors((prev) => ({
+          ...prev,
+          projectZipCode: true,
+        }));
+        toast.error("Please enter are Zip code.");
+
+        return false;
+      }
+    }
+
+    if (step === 2) {
+      if (isEmpty(meetingDetails.meetingMethod)) {
+        setEmptyErrors((prev) => ({
+          ...prev,
+          meetingMethod: true,
+        }));
+        toast.error("Please select a meeting method.");
+
+        return false;
+      }
+
+      if (isEmpty(meetingDetails.meetingDate?.toISOString())) {
+        setEmptyErrors((prev) => ({
+          ...prev,
+          meetingDate: true,
+        }));
+        toast.error("Please select meeting date.");
+
+        return false;
+      }
+
+      if (isEmpty(meetingDetails.meetingTime)) {
+        setEmptyErrors((prev) => ({
+          ...prev,
+          meetingTime: true,
+        }));
+        toast.error("Please select meeting time.");
+
+        return false;
+      }
+    }
+
+    return true;
   };
 
+  // Submit form data
+  const handelSubmit = () => {
+    console.log(formData);
+
+    setFormData({
+      personalDetails: {
+        fullName: "",
+        email: "",
+        phone: "",
+      },
+      projectDetails: {
+        projectType: "",
+        projectBudget: "",
+        projectZipCode: "",
+      },
+      meetingDetails: {
+        meetingMethod: "",
+        meetingDate: null,
+        meetingTime: "",
+      },
+    });
+
+    alert.success({
+      heading: "Meeting Confirmed",
+      text: "Your meeting has been confirmed successfully. We look forward to seeing you then.",
+      submitBtnName: "Close",
+      submitFn: closeAlert,
+    });
+  };
+
+  // Next step
   const nextStep = () => {
+    const isValid = validateSteps();
+    if (!isValid) return;
+
     if (step < 2) {
       setStep((prev) => prev + 1);
     } else {
       // Form submit
-      handelSubmit();
+      const meetingDate = formData.meetingDetails.meetingDate;
+
+      if (!meetingDate) return;
+
+      alert.warning({
+        heading: "Confirm meeting?",
+        text: `You're about to schedule a meeting for ${format(meetingDate, "MMMM d")} at ${formData.meetingDetails.meetingTime}.`,
+        submitBtnName: "Confirm",
+        submitFn: handelSubmit,
+      });
     }
   };
 
+  // Prev step
   const backStep = () => {
     if (step > 0) {
       setStep((prev) => prev - 1);
@@ -321,10 +473,6 @@ export default function BookingModal() {
                       value={formData.personalDetails.fullName}
                       onChange={(value) => {
                         updateFormData("personalDetails", "fullName", value);
-                        setEmptyErrors((prev) => ({
-                          ...prev,
-                          fullName: false,
-                        }));
                       }}
                       placeholder="Enter your full name"
                       icon={FiUser}
@@ -344,6 +492,7 @@ export default function BookingModal() {
                       placeholder="Enter your email"
                       icon={FiMail}
                       required={true}
+                      error={emptyErrors.email}
                     />
                     <Input
                       label="Phone Number"
@@ -356,6 +505,7 @@ export default function BookingModal() {
                       placeholder="Enter your phone number"
                       icon={FiPhone}
                       required={true}
+                      error={emptyErrors.phone}
                     />
                   </div>
                 </div>
@@ -374,6 +524,7 @@ export default function BookingModal() {
                     placeholder="Select project type"
                     required={true}
                     icon={FiLayers}
+                    error={emptyErrors.projectType}
                   />
 
                   <div className="flex gap-6">
@@ -387,6 +538,7 @@ export default function BookingModal() {
                       placeholder="Select project type"
                       required={true}
                       icon={FiDollarSign}
+                      error={emptyErrors.projectBudget}
                     />
 
                     <Input
@@ -404,6 +556,7 @@ export default function BookingModal() {
                       placeholder="12345"
                       icon={FiMapPin}
                       required={true}
+                      error={emptyErrors.projectZipCode}
                     />
                   </div>
                 </div>
@@ -435,7 +588,7 @@ export default function BookingModal() {
                                 option.value,
                               )
                             }
-                            className={`flex-center w-full gap-3 px-8 py-3 border border-gray-300 rounded-md cursor-pointer ${isSelected ? "bg-gray-200" : ""}`}
+                            className={`flex-center w-full gap-3 px-8 py-3 border ${emptyErrors.meetingMethod ? "border-red-500" : "border-gray-300"} rounded-md cursor-pointer ${isSelected ? "bg-gray-200" : ""}`}
                           >
                             <span className="text-base">{option.icon}</span>
                             <span className="text-sm">{option.label}</span>
@@ -456,6 +609,7 @@ export default function BookingModal() {
                         onChange={(date) =>
                           updateFormData("meetingDetails", "meetingDate", date)
                         }
+                        error={emptyErrors.meetingDate}
                       />
                     </div>
                     <div className="flex-1">
@@ -469,6 +623,7 @@ export default function BookingModal() {
                         placeholder="Select time"
                         required={true}
                         icon={FiClock}
+                        error={emptyErrors.meetingTime}
                       />
                     </div>
                   </div>
