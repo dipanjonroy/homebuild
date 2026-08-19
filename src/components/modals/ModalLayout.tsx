@@ -53,7 +53,7 @@ export default function ModalLayout() {
       className="fixed inset-0 bg-(--color-foreground)/80 backdrop-blur-sm z-100"
     >
       <div className={`w-full h-full ${alignClass}`}>
-        <div className="w-full" onClick={(e) => e.stopPropagation()}>{modal}</div>
+        <div  onClick={(e) => e.stopPropagation()}>{modal}</div>
       </div>
     </div>
   );

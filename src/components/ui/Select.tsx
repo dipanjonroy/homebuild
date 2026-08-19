@@ -50,7 +50,7 @@ export default function Select<T>({
     <div ref={selectRef} className="relative w-full">
       {/* Label */}
       {label && (
-        <label className="block font-bold text-sm mb-1">
+        <label className="block font-bold text-xs lg:text-sm mb-1">
           {label}
           {required && <span className="text-red-600 ms-1">*</span>}
         </label>
@@ -59,7 +59,7 @@ export default function Select<T>({
       {/* Select Button */}
       <button
         onClick={() => setIsopen(!isOpen)}
-        className={`relative w-full border ${error ? "border-red-500" :"border-gray-300"} rounded-md ${Icon ? "ps-10 pe-3" : "px-3"} py-3 black-text text-sm flex-center-between cursor-pointer`}
+        className={`relative w-full border ${error ? "border-red-500" :"border-gray-300"} rounded-md ${Icon ? "ps-10 pe-3" : "px-3"} py-3 black-text text-xs lg:text-sm flex-center-between cursor-pointer`}
       >
         <span className={`${selectedOption ? "back-text" : "text-gray-400"}`}>{selectedOption?.label || placeholder}</span>
         <span className={`text-base transition-transform duration-200 ${isOpen ? "-rotate-180" : ""}`}>
@@ -84,7 +84,7 @@ export default function Select<T>({
                 <button
                   key={index}
                   onClick={() => handleSelect(option)}
-                  className={`w-full text-left text-sm block p-3 cursor-pointer transition ${isSelected ? "black-bg white-text" : "hover:black-bg hover:white-text"}`}
+                  className={`w-full text-left text-xs lg:text-sm block p-3 cursor-pointer transition ${isSelected ? "black-bg white-text" : "hover:black-bg hover:white-text"}`}
                 >
                   {option.label}
                 </button>

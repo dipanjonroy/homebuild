@@ -34,7 +34,7 @@ export default function SelectCalender({
     <div ref={calenderRef} className="w-full relative">
       {/* Label */}
       {label && (
-        <label className="block font-bold text-sm mb-1">
+        <label className="block font-bold text-xs lg:text-sm mb-1">
           {label}
           {required && <span className="text-red-600 ms-1">*</span>}
         </label>
@@ -43,7 +43,7 @@ export default function SelectCalender({
       {/* Select calender button */}
       <button
         onClick={() => setIsopen(!isOpen)}
-        className={`relative w-full border ${error ? "border-red-500" : "border-gray-300"} rounded-md ps-10 pe-3 py-3 text-left ${value ? "black-text" : "text-gray-400"} text-sm cursor-pointer`}
+        className={`relative w-full border ${error ? "border-red-500" : "border-gray-300"} rounded-md ps-10 pe-3 py-3 text-left ${value ? "black-text" : "text-gray-400"} text-xs lg:text-sm cursor-pointer`}
       >
         {value ? format(value, "dd MMMM yyyy") : placeholder}
         <span className="absolute top-1/2 -translate-y-1/2 left-3">
@@ -53,7 +53,7 @@ export default function SelectCalender({
 
       {/* Calender */}
       {isOpen && (
-        <div className="absolute inset-x-0 z-50">
+        <div className="absolute inset-x-0 z-100">
           <Calender
             value={value}
             onChange={(date) => {

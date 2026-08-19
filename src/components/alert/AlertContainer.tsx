@@ -8,7 +8,7 @@ import { useRef } from "react";
 
 export default function AlertContainer() {
   const alertContainerRef = useRef<HTMLDivElement>(null);
-  const { isAlertOpen, clearAlert, closeAlert } = useAlertStore();
+  const { isAlertOpen, clearAlert } = useAlertStore();
 
   useGSAP(() => {
     const element = alertContainerRef.current;
