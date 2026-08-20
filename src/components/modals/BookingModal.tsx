@@ -381,7 +381,7 @@ export default function BookingModal() {
   return (
     <OpenCloseAnimation>
       <div className="md:mx-6 lg:mx-0 flex-center">
-        <div className="relative w-full h-full max-w-250 p-8 white-bg rounded-xl">
+        <div className="relative w-full h-full max-w-250 white-bg rounded-xl">
           
 
           {/* Header */}
