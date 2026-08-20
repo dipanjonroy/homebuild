@@ -17,7 +17,6 @@ import {
   FiVideo,
   FiHome,
 } from "react-icons/fi";
-import { useModalStore } from "@/store/ModalStore";
 import { useState } from "react";
 import Image from "next/image";
 import Input from "../ui/Input";
