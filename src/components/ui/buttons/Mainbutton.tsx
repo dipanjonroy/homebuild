@@ -4,7 +4,7 @@ import { GoArrowRight } from "react-icons/go";
 type MainButtonProps = {
   btnName: string;
   url: string;
-  variant?: string;
+  variant?: "black" | "white";
 };
 
 export default function Mainbutton({ btnName, url, variant }: MainButtonProps) {

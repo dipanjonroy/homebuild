@@ -6,7 +6,7 @@ export default function index() {
   const heroHeading =
     "Building Quality Homes & Commercial Spaces You Can Trust";
   return (
-    <div className="w-full min-h-svh relative overflow-hidden">
+    <div id="home-hero" className="w-full min-h-svh relative overflow-hidden">
       {/* Background */}
       <div className="absolute w-full h-full">
         <div className="relative w-full h-full">
