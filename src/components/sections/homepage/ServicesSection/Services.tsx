@@ -1,3 +1,4 @@
+import StackCard from "@/components/animations/StackCard";
 import ServiceCard from "./ServiceCard";
 
 const services = [
@@ -62,11 +63,13 @@ const services = [
 export default function Services() {
   return (
     <div className="w-full">
-      <div className="space-y-14">
-        {services.map((service, idx) => (
-          <ServiceCard key={idx} service={service} reverse={idx % 2 !== 0} />
-        ))}
-      </div>
+      <StackCard>
+        <div className="cards space-y-50">
+          {services.map((service, idx) => (
+            <ServiceCard key={idx} service={service} reverse={idx % 2 !== 0} />
+          ))}
+        </div>
+      </StackCard>
     </div>
   );
 }
