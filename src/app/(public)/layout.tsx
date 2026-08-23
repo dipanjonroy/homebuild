@@ -1,5 +1,5 @@
 import Header from "@/components/layouts/header";
-import SmoothScroller from "@/components/provider/SmoothScroller";
+import SmoothScroller from "@/components/SmoothScroller";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
