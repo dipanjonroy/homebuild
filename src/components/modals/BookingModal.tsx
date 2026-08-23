@@ -24,8 +24,8 @@ import PrimaryButton from "../ui/buttons/PrimaryButton";
 import Select from "../ui/Select";
 import SelectCalender from "../ui/SelectCalender";
 import { isEmail, isEmpty } from "@/helpers/FormValidator";
-import { toast } from "../toast/toast";
-import { alert } from "../alert/alert";
+import { toast } from "../provider/toast/toast";
+import { alert } from "../provider/alert/alert";
 import { format } from "date-fns";
 import { useAlertStore } from "@/store/AlertStore";
 import OpenCloseAnimation from "../animations/OpenCloseAnimation";
@@ -149,8 +149,6 @@ const timeOptions = [
 ];
 
 export default function BookingModal() {
- 
-
   const [step, setStep] = useState<number>(0);
 
   const { closeAlert } = useAlertStore();
@@ -381,8 +379,6 @@ export default function BookingModal() {
     <OpenCloseAnimation>
       <div className="md:mx-6 lg:mx-0 flex-center">
         <div className="relative w-full h-full max-w-250 white-bg rounded-xl">
-          
-
           {/* Header */}
           <div className="flex flex-col lg:flex-row items-center justify-center lg:justify-start gap-2 lg:gap-5">
             <div className="w-10 h-10 lg:w-16 lg:h-16 rounded-full bg-(--color-foreground)/10 flex-center">
