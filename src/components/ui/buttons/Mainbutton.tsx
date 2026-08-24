@@ -15,7 +15,7 @@ export default function Mainbutton({ btnName, url, variant }: MainButtonProps) {
   return (
     <Link
       href={url}
-      className={`${btnClass} ps-6 pe-1.5 py-1.5 rounded-full inline-flex-center gap-2 group`}
+      className={`${btnClass} ps-6 pe-1.5 py-1.5 rounded-full inline-flex w-fit items-center gap-2 group`}
     >
       {/* Text */}
       <span className="relative h-5 overflow-hidden leading-5 flex items-center">

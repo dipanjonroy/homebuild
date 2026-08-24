@@ -47,7 +47,7 @@ body {
   @apply heading font-bold text-[clamp(2rem,3vw,3rem)] leading-tight;
 }
 @utility base-para {
-  @apply text-sm lg:text-base
+  @apply text-sm lg:text-base;
 }
 
 /* Border color */
@@ -69,7 +69,7 @@ body {
   @apply flex flex-col items-center justify-center;
 }
 @utility inline-flex-center {
-  @apply inline-flex items-center justify-center;
+  @apply inline-flex items-center;
 }
 @utility flex-end {
   @apply flex items-end justify-end;
@@ -86,6 +86,15 @@ body {
 /* Section padding */
 @utility section-padding {
   @apply pt-[clamp(3.75rem,9vw,7.5rem)] pb-[clamp(3.75rem,9vw,7.5rem)];
+}
+
+@utility half-section-padding {
+  @apply pt-[clamp(1rem,9vw,3.75rem)] pb-[clamp(1rem,9vw,3.75rem)];
+}
+
+/* Backdrop blur */
+@utility bg-blur {
+  @apply bg-(--color-background)/10 backdrop-blur-sm border white-border;
 }
 
 /* Marquee animation */
