@@ -5,7 +5,7 @@ import Projects from "./Projects";
 
 export default function index() {
   return (
-    <section className="pb-[clamp(1rem,9vw,3.75rem)]">
+    <section className="pb-[clamp(3.75rem,9vw,7.5rem)]">
       <div className="site-container">
         <div className="space-y-14">
           <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6">
