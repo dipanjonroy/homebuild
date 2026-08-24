@@ -51,6 +51,7 @@ export default function ModalLayout() {
       onClick={closeModal}
       style={{ display: "none" }}
       className="fixed inset-0 bg-(--color-foreground)/80 backdrop-blur-sm z-100"
+      data-lenis-prevent
     >
       <div className={`w-full h-full ${alignClass}`}>
         <div  onClick={(e) => e.stopPropagation()}>{modal}</div>

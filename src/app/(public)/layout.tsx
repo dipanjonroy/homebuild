@@ -1,5 +1,4 @@
 import Header from "@/components/layouts/header";
-import SmoothScroller from "@/components/SmoothScroller";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -15,9 +14,9 @@ export default function SiteLayout({
   children: React.ReactNode;
 }) {
   return (
-    <SmoothScroller>
+    <>
       <Header />
       <main>{children}</main>
-    </SmoothScroller>
+    </>
   );
 }

@@ -3,6 +3,7 @@ import "./globals.css";
 import ModalLayout from "@/components/modals/ModalLayout";
 import ToastContainer from "@/components/toast/ToastContainer";
 import AlertContainer from "@/components/alert/AlertContainer";
+import SmoothScroller from "@/components/SmoothScroller";
 
 const interFont = Inter({
   variable: "--font-inter",
@@ -25,7 +26,8 @@ export default function RootLayout({
       className={`${interFont.variable} ${manropeFont.variable} antialiased`}
     >
       <body>
-        {children}
+        <SmoothScroller>{children}</SmoothScroller>
+
         <ModalLayout />
         <AlertContainer />
         <ToastContainer />

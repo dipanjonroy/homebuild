@@ -16,9 +16,11 @@ export default function index() {
           </div>
 
           {/* Services */}
-          <Services/>
+          <Services />
         </div>
       </div>
+
+      <div className="h-dvh"></div>
     </section>
   );
 }
