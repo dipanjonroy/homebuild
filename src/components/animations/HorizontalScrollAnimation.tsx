@@ -39,9 +39,6 @@ export default function HorizontalScrollAnimation({
 
         const scrollLength = cards.length * scrollPerCard;
 
-        const cardTweenDuration = 5;
-        const holdDuration = (holdScroll / scrollLength) * cardTweenDuration;
-
         const tl = gsap.timeline({
           scrollTrigger: {
             trigger: containerRef.current,
@@ -63,9 +60,9 @@ export default function HorizontalScrollAnimation({
             x: 0,
             ease: "none",
             stagger: stagger,
-            duration: cardTweenDuration,
+            duration: 5,
           },
-        ).to({}, { duration: holdDuration });
+        ).to({}, { duration: 2 });
       });
 
       return () => mm.revert();
