@@ -10,6 +10,7 @@ interface HorizontalScrollAnimationProps {
   distance?: string;
   stagger?: number;
   scrollPerCard?: number;
+  holdScroll?: number;
 }
 
 export default function HorizontalScrollAnimation({
@@ -18,6 +19,7 @@ export default function HorizontalScrollAnimation({
   distance = "100vw",
   stagger = 4,
   scrollPerCard = 600,
+  holdScroll = 1000,
 }: HorizontalScrollAnimationProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -36,6 +38,9 @@ export default function HorizontalScrollAnimation({
         const cards = gsap.utils.toArray<HTMLElement>(cardsContainer?.children);
 
         const scrollLength = cards.length * scrollPerCard;
+
+        const cardTweenDuration = 5;
+        const holdDuration = (holdScroll / scrollLength) * cardTweenDuration;
 
         const tl = gsap.timeline({
           scrollTrigger: {
@@ -58,9 +63,9 @@ export default function HorizontalScrollAnimation({
             x: 0,
             ease: "none",
             stagger: stagger,
-            duration: 5,
+            duration: cardTweenDuration,
           },
-        );
+        ).to({}, { duration: holdDuration });
       });
 
       return () => mm.revert();
