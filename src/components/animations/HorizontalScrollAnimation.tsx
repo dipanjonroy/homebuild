@@ -10,7 +10,6 @@ interface HorizontalScrollAnimationProps {
   distance?: string;
   stagger?: number;
   scrollPerCard?: number;
-  holdScroll?: number;
 }
 
 export default function HorizontalScrollAnimation({
@@ -19,7 +18,6 @@ export default function HorizontalScrollAnimation({
   distance = "100vw",
   stagger = 4,
   scrollPerCard = 600,
-  holdScroll = 1000,
 }: HorizontalScrollAnimationProps) {
   const containerRef = useRef<HTMLDivElement>(null);
 
