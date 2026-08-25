@@ -3,6 +3,7 @@ import BrandLogoSection from "@/components/sections/homepage/BrandLogoSection";
 import AboutSection from "@/components/sections/homepage/AboutSection";
 import ServicesSection from "@/components/sections/homepage/ServicesSection";
 import PortfolioSection from "@/components/sections/homepage/PortfolioSection";
+import ProcessSection from "@/components/sections/homepage/ProcessSection";
 
 export default function Homepage() {
   return (
@@ -12,6 +13,7 @@ export default function Homepage() {
       <AboutSection />
       <ServicesSection />
       <PortfolioSection />
+      <ProcessSection />
     </>
   );
 }
