@@ -5,12 +5,17 @@ import Logo from "../Logo";
 import Mainmenu from "../menus/Mainmenu";
 import Mainbutton from "../ui/buttons/Mainbutton";
 import MobileMenuButton from "../ui/buttons/MobileMenuButton";
+import { useLenis } from "lenis/react";
 
 export default function Header() {
+  const lenis = useLenis();
+
   const [showHeader, setShowHeader] = useState<boolean>(true);
   const [scrolled, setScrolled] = useState<boolean>(false);
 
   useEffect(() => {
+    if (!lenis) return;
+
     let lastScroll = window.scrollY;
     const heroSection = document.getElementById("home-hero");
 
@@ -31,16 +36,14 @@ export default function Header() {
       lastScroll = currentScroll;
     };
 
-    window.addEventListener("scroll", handleScroll);
+    lenis.on("scroll", handleScroll);
 
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  });
+    return () => lenis.off("scroll", handleScroll);
+  }, [lenis]);
 
   return (
     <div
-      className={`fixed top-0 w-full z-50 px-6 lg:px-20 transition-transform duration-600 ${showHeader ? "translate-y-0" : "-translate-y-50"} ${scrolled ? "white-bg shadow-lg" : ""}`}
+      className={`fixed top-0 w-full z-50 px-6 lg:px-20 transition-transform duration-600 ${showHeader ? "translate-y-0" : "-translate-y-50"} ${scrolled ? "white-bg shadow-lg" : ""} `}
     >
       <div className="flex-center-between">
         {/* Header Logo */}
