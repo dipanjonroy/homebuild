@@ -25,6 +25,7 @@ export default function index() {
               src="/homepage/why-choose-section.jpg"
               alt="Contractor discussing"
               fill
+              sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover object-top"
             />
           </div>
