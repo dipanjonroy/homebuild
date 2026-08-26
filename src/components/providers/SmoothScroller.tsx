@@ -18,9 +18,15 @@ const LenisScrollReset = () => {
   useEffect(() => {
     if (isModalOpen) {
       lenis?.stop();
+      document.body.style.overflow = "hidden";
     } else {
       lenis?.start();
+      document.body.style.overflow = "";
     }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [lenis, isModalOpen]);
 
   return null;

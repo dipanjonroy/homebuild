@@ -1,9 +1,9 @@
 import { Manrope, Inter } from "next/font/google";
 import "./globals.css";
 import ModalLayout from "@/components/modals/ModalLayout";
-import ToastContainer from "@/components/toast/ToastContainer";
-import AlertContainer from "@/components/alert/AlertContainer";
-import SmoothScroller from "@/components/SmoothScroller";
+import ToastContainer from "@/components/providers/toast/ToastContainer";
+import AlertContainer from "@/components/providers/alert/AlertContainer";
+import SmoothScroller from "@/components/providers/SmoothScroller";
 
 const interFont = Inter({
   variable: "--font-inter",
