@@ -5,6 +5,7 @@ import ServicesSection from "@/components/sections/homepage/ServicesSection";
 import PortfolioSection from "@/components/sections/homepage/PortfolioSection";
 import ProcessSection from "@/components/sections/homepage/ProcessSection";
 import WhyChooseSection from "@/components/sections/homepage/WhyChooseSection";
+import TeamSection from "@/components/sections/homepage/TeamSection";
 
 export default function Homepage() {
   return (
@@ -16,6 +17,7 @@ export default function Homepage() {
       <PortfolioSection />
       <ProcessSection />
       <WhyChooseSection />
+      <TeamSection/>
     </>
   );
 }
