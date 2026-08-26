@@ -23,10 +23,10 @@ const causeData = [
 
 export default function Causes() {
   return (
-    <div className="w-full grid grid-cols-4 gap-8">
+    <div className="w-full grid grid-cols-1 md:grid-cols-4 gap-6">
       {
         causeData.map((cause,idx)=>(
-          <div className={idx < 2 ?"col-span-2" : "col-span-4"} key={idx}>
+          <div className={idx < 2 ?"md:col-span-2" : "md:col-span-4"} key={idx}>
             <CauseCard details={cause}/>
           </div>
         ))
