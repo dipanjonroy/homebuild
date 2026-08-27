@@ -7,6 +7,7 @@ import ProcessSection from "@/components/sections/homepage/ProcessSection";
 import WhyChooseSection from "@/components/sections/homepage/WhyChooseSection";
 import TeamSection from "@/components/sections/homepage/TeamSection";
 import TestimonialSection from "@/components/sections/homepage/TestimonialSection";
+import CtaSection from "@/components/sections/homepage/CTASection";
 
 export default function Homepage() {
   return (
@@ -20,6 +21,7 @@ export default function Homepage() {
       <WhyChooseSection />
       <TeamSection/>
       <TestimonialSection/>
+      <CtaSection/>
     </>
   );
 }

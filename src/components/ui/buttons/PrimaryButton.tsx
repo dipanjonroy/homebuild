@@ -24,7 +24,7 @@ export default function PrimaryButton({
   return (
     <button
       type="button"
-      className={`${btnClass} w-full md:w-fit ps-6 pe-1.5 py-2 rounded-full inline-flex items-center justify-center gap-2 group cursor-pointer`}
+      className={`${btnClass} ps-6 pe-1.5 py-2 rounded-full inline-flex w-fit items-center gap-2 group cursor-pointer`}
       onClick={onClick}
     >
       {/* Text */}
