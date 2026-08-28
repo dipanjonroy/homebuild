@@ -11,7 +11,7 @@ export default function index() {
       <div className="absolute w-full h-full">
         <div className="relative w-full h-full">
           <Image
-            src="/Homepage/homepage-hero-image.jpg"
+            src="/homepage/homepage-hero-image.jpg"
             alt="Construction undergoing"
             fill
             sizes="100vw"
