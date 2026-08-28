@@ -1,3 +1,4 @@
+import Footer from "@/components/layouts/Footer";
 import Header from "@/components/layouts/header";
 import type { Metadata } from "next";
 
@@ -17,6 +18,7 @@ export default function SiteLayout({
     <>
       <Header />
       <main>{children}</main>
+      <Footer/>
     </>
   );
 }
