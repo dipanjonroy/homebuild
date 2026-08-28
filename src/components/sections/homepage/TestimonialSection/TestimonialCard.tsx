@@ -31,9 +31,7 @@ export default function TestimonialCard({
 
           {/* Reviewer name location */}
           <div>
-            <h3 className="heading font-bold text-xl">
-              {details.name}
-            </h3>
+            <h3 className="heading font-bold text-xl">{details.name}</h3>
             <p className="text-xs lg:text-sm">{details.location}</p>
           </div>
         </div>
@@ -43,11 +41,9 @@ export default function TestimonialCard({
 
         {/* Stars */}
         <div className="absolute bottom-0 left-0 flex gap-1">
-          {
-            [...Array(5)].map((num)=>(
-              <FaStar key={num} className="text-amber-400"/>
-            ))
-          }
+          {[...Array(5)].map((_, index) => (
+            <FaStar key={index} className="text-amber-400" />
+          ))}
         </div>
       </div>
     </div>
