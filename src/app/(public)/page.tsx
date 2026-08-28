@@ -8,6 +8,7 @@ import WhyChooseSection from "@/components/sections/homepage/WhyChooseSection";
 import TeamSection from "@/components/sections/homepage/TeamSection";
 import TestimonialSection from "@/components/sections/homepage/TestimonialSection";
 import CtaSection from "@/components/sections/homepage/CTASection";
+import ArticleSection from "@/components/sections/homepage/ArticleSection";
 
 export default function Homepage() {
   return (
@@ -19,9 +20,10 @@ export default function Homepage() {
       <PortfolioSection />
       <ProcessSection />
       <WhyChooseSection />
-      <TeamSection/>
-      <TestimonialSection/>
-      <CtaSection/>
+      <TeamSection />
+      <TestimonialSection />
+      <CtaSection />
+      <ArticleSection />
     </>
   );
 }
