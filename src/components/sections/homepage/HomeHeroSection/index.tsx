@@ -65,7 +65,7 @@ export default function index() {
             {/* Brand Text - Bottom */}
             <div className="hero-brand-text absolute bottom-0 left-0 w-full overflow-hidden pb-6 lg:pb-1">
               <span className="block w-full heading font-extrabold white-text whitespace-nowrap leading-tight text-[clamp(2.25rem,9vw,9.5rem)] text-center">
-                HomeBuild Const.
+                BuildWell Const.
               </span>
             </div>
           </div>
