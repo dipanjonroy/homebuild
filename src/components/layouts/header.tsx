@@ -25,11 +25,16 @@ export default function Header() {
       const currentScroll = window.scrollY;
       const heroHeight = heroSection?.offsetHeight;
 
+      const isScrollingDown = currentScroll > lastScroll;
+      const isScrollingUp = currentScroll < lastScroll;
+
       setScrolled(currentScroll > heroHeight);
 
-      if (currentScroll > lastScroll && currentScroll >= heroHeight - 150) {
+      if (isScrollingDown && currentScroll >= heroHeight - 150) {
         setShowHeader(false);
-      } else {
+      }
+
+      if (isScrollingUp) {
         setShowHeader(true);
       }
 
