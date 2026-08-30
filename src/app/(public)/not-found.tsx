@@ -10,11 +10,9 @@ export default function NotFound() {
 
   useEffect(() => {
     setNotFound(true);
-    console.log("add")
 
     return () => {
       setNotFound(false);
-      console.log("remove")
     };
   }, [setNotFound]);
 
