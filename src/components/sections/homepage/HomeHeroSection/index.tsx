@@ -1,29 +1,29 @@
 import Image from "next/image";
 import HeroButton from "./HeroButton";
-import HomeHeroAnimation from "@/components/animations/HomeHeroAnimation";
+import HeroAnimation from "@/components/animations/HeroAnimation";
 
 export default function index() {
   const heroHeading =
     "Building Quality Homes & Commercial Spaces You Can Trust";
   return (
     <div className="scroll-height w-full min-h-svh relative overflow-hidden">
-      {/* Background */}
-      <div className="absolute w-full h-full">
-        <div className="relative w-full h-full">
-          <Image
-            src="/homepage/homepage-hero-image.jpg"
-            alt="Construction undergoing"
-            fill
-            sizes="100vw"
-            className="object-cover object-center"
-          />
+      <HeroAnimation>
+        {/* Background */}
+        <div className="absolute w-full h-full">
+          <div className="relative w-full h-full">
+            <Image
+              src="/homepage/homepage-hero-image.jpg"
+              alt="Construction undergoing"
+              fill
+              sizes="100vw"
+              className="hero-bg object-cover object-center"
+            />
+          </div>
+
+          <span className="absolute inset-0 bg-linear-to-t from-black to-transparent" />
         </div>
 
-        <span className="absolute inset-0 bg-linear-to-t from-black to-transparent" />
-      </div>
-
-      {/* Hero Content */}
-      <HomeHeroAnimation>
+        {/* Hero Content */}
         <div className="relative z-10 h-svh">
           <div className="site-container relative h-full">
             {/* Main Content - Center */}
@@ -70,7 +70,7 @@ export default function index() {
             </div>
           </div>
         </div>
-      </HomeHeroAnimation>
+      </HeroAnimation>
     </div>
   );
 }
