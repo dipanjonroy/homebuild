@@ -3,6 +3,11 @@ import ServiceSection from "@/components/sections/ServicesSection";
 import PortfolioSection from "@/components/sections/PortfolioSection";
 import TestiomonialSection from "@/components/sections/TestimonialSection";
 import CtaSection from "@/components/sections/CTASection";
+import { Metadata } from "next";
+
+export const metadata:Metadata = {
+  title:"Services"
+}
 
 const heading = "Construction Services Designed Around Your Vision";
 const text =

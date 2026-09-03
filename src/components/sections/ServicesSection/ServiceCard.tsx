@@ -30,6 +30,7 @@ export default function ServiceCard({ service, reverse }: ServiceType) {
             fill
             sizes="(max-width:768px) 100vw, 50vw"
             className="object-cover"
+            loading="eager"
           />
         </div>
 
