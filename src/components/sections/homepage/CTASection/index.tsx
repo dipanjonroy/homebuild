@@ -1,9 +1,9 @@
 import Image from "next/image";
 import CTAButton from "./CTAButton";
 
-export default function index() {
+export default function index({className}:{className?:string}) {
   return (
-    <section className="pb-[clamp(3.75rem,9vw,7.5rem)]">
+    <section className={`${className} pb-[clamp(3.75rem,9vw,7.5rem)]`}>
       <div className="site-container">
         <div className="relative w-full h-120 xl:h-160 rounded-2xl overflow-hidden">
           {/* Background Image */}
