@@ -1,10 +1,19 @@
 import HeroAnimation from "@/components/animations/HeroAnimation";
 import Image from "next/image";
 
-export default function index() {
+type HeroSectionTypes = {
+  img: string;
+  badge: string;
+  headline: string;
+  text: string;
+};
 
-  const headingText = "Building With Purpose, Crafting With Pride";
-
+export default function index({
+  img,
+  badge,
+  headline,
+  text,
+}: HeroSectionTypes) {
   return (
     <section className="scroll-height w-full h-dvh 2xl:h-200 overflow-hidden">
       <HeroAnimation>
@@ -13,8 +22,8 @@ export default function index() {
           <div className="absolute inset-0">
             <div className="relative w-full h-full">
               <Image
-                src="/aboutpage/about-us-hero-image.jpg"
-                alt="About page hero image"
+                src={img}
+                alt="hero image"
                 fill
                 sizes="100vw"
                 className="object-cover hero-bg"
@@ -30,29 +39,26 @@ export default function index() {
           <div className="relative site-container z-100">
             <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-4 white-text">
               <div className="w-full max-w-130">
-                <span className="hero-badge block mb-8"> [ About Us ]</span>
+                <span className="hero-badge block mb-8"> {`[${badge}]`}</span>
                 <h1 className="heading font-bold text-4xl lg:text-5xl tracking-tight leading-10 lg:leading-12 xl:leading-tight">
-                  {
-                    headingText.split(" ").map((word,wordIdx)=>(
-                      <span key={wordIdx} className="inline-block whitespace-nowrap">
-                        {word.split("").map((char,charIdx)=>(
-                          <span key={charIdx} className="hero-char inline-block">
-                            {char}
-                          </span>
-                        ))}
-                        {"\u00A0"}
-                      </span>
-                    ))
-                  }
+                  {headline.split(" ").map((word, wordIdx) => (
+                    <span
+                      key={wordIdx}
+                      className="inline-block whitespace-nowrap"
+                    >
+                      {word.split("").map((char, charIdx) => (
+                        <span key={charIdx} className="hero-char inline-block">
+                          {char}
+                        </span>
+                      ))}
+                      {"\u00A0"}
+                    </span>
+                  ))}
                 </h1>
               </div>
 
               <p className="hero-brand-text w-full max-w-130 lg:text-right text-sm lg:text-base">
-                We believe great construction is more than putting materials
-                together—it’s about creating spaces that last, inspire, and make
-                a difference. With skilled craftsmanship, honest communication,
-                and attention to every detail, we bring each client’s vision to
-                life.
+                {text}
               </p>
             </div>
           </div>

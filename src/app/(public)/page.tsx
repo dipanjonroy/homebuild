@@ -1,14 +1,14 @@
-import HomeHeroSection from "@/components/sections/homepage/HomeHeroSection";
-import BrandLogoSection from "@/components/sections/homepage/BrandLogoSection";
-import AboutSection from "@/components/sections/homepage/AboutSection";
-import ServicesSection from "@/components/sections/homepage/ServicesSection";
-import PortfolioSection from "@/components/sections/homepage/PortfolioSection";
-import ProcessSection from "@/components/sections/homepage/ProcessSection";
-import WhyChooseSection from "@/components/sections/homepage/WhyChooseSection";
-import TeamSection from "@/components/sections/homepage/TeamSection";
-import TestimonialSection from "@/components/sections/homepage/TestimonialSection";
-import CtaSection from "@/components/sections/homepage/CTASection";
-import ArticleSection from "@/components/sections/homepage/ArticleSection";
+import HomeHeroSection from "@/components/sections/HomeHeroSection";
+import BrandLogoSection from "@/components/sections/BrandLogoSection";
+import AboutSection from "@/components/sections/HomeAboutSection";
+import ServicesSection from "@/components/sections/ServicesSection";
+import PortfolioSection from "@/components/sections/PortfolioSection";
+import ProcessSection from "@/components/sections/ProcessSection";
+import WhyChooseSection from "@/components/sections/WhyChooseSection";
+import TeamSection from "@/components/sections/TeamSection";
+import TestimonialSection from "@/components/sections/TestimonialSection";
+import CtaSection from "@/components/sections/CTASection";
+import ArticleSection from "@/components/sections/ArticleSection";
 
 export default function Homepage() {
   return (
