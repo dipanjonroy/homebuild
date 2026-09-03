@@ -14,7 +14,7 @@ const services = [
       "New home construction",
       "Interior & Exterior finishing",
     ],
-    url: "/",
+    url: "residential-construction",
   },
   {
     img: {
@@ -28,7 +28,7 @@ const services = [
       "New home construction",
       "Large-Scale Construction Projects",
     ],
-    url: "/",
+    url: "commercial-construction",
   },
   {
     img: {
@@ -42,7 +42,7 @@ const services = [
       "Home Extensions & Upgrades",
       "Structural Improvements",
     ],
-    url: "/",
+    url: "renovation-remodeling",
   },
   {
     img: {
@@ -56,7 +56,7 @@ const services = [
       "Material Selection & Guidance",
       "Complete Project Execution",
     ],
-    url: "/",
+    url: "design-build-services",
   },
 ];
 

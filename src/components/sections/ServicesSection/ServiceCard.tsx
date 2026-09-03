@@ -1,3 +1,4 @@
+import Mainbutton from "@/components/ui/buttons/Mainbutton";
 import Image from "next/image";
 import { GoCheckCircle } from "react-icons/go";
 
@@ -10,6 +11,7 @@ type ServiceType = {
     heading: string;
     text: string;
     points: string[];
+    url:string;
   };
 
   reverse: boolean;
@@ -39,7 +41,7 @@ export default function ServiceCard({ service, reverse }: ServiceType) {
             {service.heading}
           </h3>
           <p className="base-para w-full xl:max-w-110">{service.text}</p>
-          <div>
+          <div className="mb-8">
             {service.points.map((point, idx) => (
               <div key={idx} className="flex items-center gap-4">
                 <GoCheckCircle className="black-text" size={18} />
@@ -47,6 +49,8 @@ export default function ServiceCard({ service, reverse }: ServiceType) {
               </div>
             ))}
           </div>
+
+          <Mainbutton variant="black" url={`/services/${service.url}`} btnName="View Details"/>
         </div>
       </div>
     </div>

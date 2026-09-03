@@ -36,7 +36,7 @@ export default function StackCard({ children }: { children: React.ReactNode }) {
   }, []);
 
   return (
-    <div ref={cardsRef} className="w-full pointer-events-none">
+    <div ref={cardsRef} className="w-full">
       {children}
     </div>
   );
