@@ -1,4 +1,8 @@
 import HeroSection from "@/components/sections/HeroSection";
+import ServiceSection from "@/components/sections/ServicesSection";
+import PortfolioSection from "@/components/sections/PortfolioSection";
+import TestiomonialSection from "@/components/sections/TestimonialSection";
+import CtaSection from "@/components/sections/CTASection";
 
 const heading = "Construction Services Designed Around Your Vision";
 const text =
@@ -13,6 +17,10 @@ export default function page() {
         headline={heading}
         text={text}
       />
+      <ServiceSection/>
+      <PortfolioSection/>
+      <TestiomonialSection/>
+      <CtaSection/>
     </>
   );
 }
