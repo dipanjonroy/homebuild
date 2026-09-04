@@ -1,7 +1,7 @@
 import StackCard from "@/components/animations/StackCard";
 import ServiceCard from "./ServiceCard";
 
-const services = [
+export const services = [
   {
     img: {
       src: "/homepage/residential-service.jpg",
