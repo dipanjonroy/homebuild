@@ -1,7 +1,7 @@
 import { services } from "@/components/sections/ServicesSection/Services";
 import BookingButton from "@/components/ui/buttons/BookingButton";
-import PrimaryButton from "@/components/ui/buttons/PrimaryButton";
 import { Metadata } from "next";
+import Image from "next/image";
 import { notFound } from "next/navigation";
 
 export async function generateMetadata({
@@ -45,11 +45,22 @@ export default async function page({
   return (
     <section className="w-full pt-50">
       <div className="site-container">
-        <div>
-          <div className="flex-col-center">
-            <h1>{service.heading}</h1>
-            <p>{service.text}</p>
+        <div className="space-y-20">
+          <div className="flex-col-center text-center gap-6">
+            <h1 className="heading font-bold text-6xl tracking-tight">{service.heading}</h1>
+            <p className="base-para w-full max-w-150">{service.text}</p>
             <BookingButton variant="black"/>
+          </div>
+
+          <div className="relative w-full h-180 rounded-2xl overflow-hidden">
+            <Image
+              src={service.img.src}
+              alt={service.img.alt}
+              fill
+              sizes="100vw"
+              className="object-cover"
+              loading="eager"
+            />
           </div>
         </div>
       </div>
