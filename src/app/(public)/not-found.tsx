@@ -17,7 +17,7 @@ export default function NotFound() {
   }, [setNotFound]);
 
   return (
-    <div className="scroll-height w-full lg:h-dvh py-25 lg:py-0">
+    <div className="w-full lg:h-dvh py-25 lg:py-0">
       <div className="site-container h-full">
         <div className="w-full h-full flex-col-center">
           <div className="w-full flex flex-col-reverse lg:flex-row lg:items-center gap-12 xl:gap-20">

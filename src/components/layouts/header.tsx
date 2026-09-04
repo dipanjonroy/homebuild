@@ -16,7 +16,10 @@ export default function Header() {
   const [showHeader, setShowHeader] = useState<boolean>(true);
   const [scrolled, setScrolled] = useState<boolean>(false);
 
-  const {isNotFound} = useNotFoundStore();
+  const { isNotFound } = useNotFoundStore();
+
+  // Is Service Page
+  const isServicePage = pathName.startsWith("/services/");
 
   useEffect(() => {
     if (!lenis) return;
@@ -24,18 +27,23 @@ export default function Header() {
     let lastScroll = window.scrollY;
     const heroSection = document.querySelector<HTMLElement>(".scroll-height");
 
-    if (!heroSection) return;
-
     const handleScroll = () => {
       const currentScroll = window.scrollY;
-      const heroHeight = heroSection?.offsetHeight;
+      const heroHeight = heroSection?.offsetHeight ?? 0;
 
       const isScrollingDown = currentScroll > lastScroll;
       const isScrollingUp = currentScroll < lastScroll;
 
-      setScrolled(currentScroll > heroHeight);
+      if (heroHeight) {
+        setScrolled(currentScroll > heroHeight);
+      } else {
+        setScrolled(currentScroll > 80);
+      }
 
-      if (isScrollingDown && currentScroll >= heroHeight - 150) {
+      if (
+        isScrollingDown &&
+        (isServicePage || currentScroll >= heroHeight - 150)
+      ) {
         setShowHeader(false);
       }
 
@@ -49,23 +57,26 @@ export default function Header() {
     lenis.on("scroll", handleScroll);
 
     return () => lenis.off("scroll", handleScroll);
-  }, [lenis, pathName]);
+  }, [lenis, pathName, isServicePage]);
+
+  // Is Black
+  const isBlack = scrolled || isNotFound || isServicePage;
 
   return (
     <div
-      className={`fixed top-0 w-full z-50 px-6 lg:px-20 transition-transform duration-600 ${showHeader ? "translate-y-0" : "-translate-y-50"} ${scrolled || isNotFound ? "white-bg shadow-lg" : ""} `}
+      className={`fixed top-0 w-full z-50 px-6 lg:px-20 transition-transform duration-600 ${showHeader ? "translate-y-0" : "-translate-y-50"} ${scrolled ? "white-bg shadow-lg" : ""} `}
     >
       <div className="flex-center-between">
         {/* Header Logo */}
         <Logo
           className="w-16 h-16 md:w-18 md:h-18 lg:w-20 lg:h-20"
           sizes="(min-width:1024px) 80px, (min-width:768px) 72px, 64px"
-          variant={scrolled || isNotFound ? "black" : "white"}
+          variant={isBlack ? "black" : "white"}
         />
 
         {/* Header Navigation */}
         <div
-          className={`hidden lg:block ${scrolled || isNotFound ? "black-text" : "white-text"}`}
+          className={`hidden lg:block ${isBlack ? "black-text" : "white-text"}`}
         >
           <Mainmenu />
         </div>
@@ -75,7 +86,7 @@ export default function Header() {
           <Mainbutton
             btnName="Contact"
             url="/contact"
-            variant={scrolled || isNotFound ? "black" : "white"}
+            variant={isBlack ? "black" : "white"}
           />
         </div>
 
