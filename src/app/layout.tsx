@@ -14,7 +14,7 @@ const interFont = Inter({
 const manropeFont = Manrope({
   variable: "--font-manrope",
   subsets: ["latin"],
-  weight: ["400", "500", "600", "800"],
+  weight: ["400", "500", "600","700", "800"],
 });
 
 export default function RootLayout({
