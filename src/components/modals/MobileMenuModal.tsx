@@ -54,12 +54,16 @@ export default function MobileMenuModal() {
       );
     }
 
-    if(btnRef.current){
-      tl.from(btnRef.current,{
-        y:20,
-        opacity:0,
-        duration:0.6
-      }, "-=0.3")
+    if (btnRef.current) {
+      tl.from(
+        btnRef.current,
+        {
+          y: 20,
+          opacity: 0,
+          duration: 0.6,
+        },
+        "-=0.3",
+      );
     }
 
     if (isModalOpen && modalId === "mobileMenuModal") {
@@ -86,7 +90,9 @@ export default function MobileMenuModal() {
     >
       <div className="w-full flex-col-center gap-20">
         <div className="w-full flex-center-between border-b border-gray-300 pb-4">
-          <Logo variant="black" className="w-16 h-16" sizes="64px" />
+          <div onClick={handleCloseModal}>
+            <Logo variant="black" className="w-16 h-16" sizes="64px" />
+          </div>
           <button
             onClick={handleCloseModal}
             className="w-10 h-10 black-bg flex-center rounded cursor-pointer"
@@ -98,7 +104,7 @@ export default function MobileMenuModal() {
         {/* Menu */}
         <nav ref={menuRef} className="flex-col-center gap-8 ">
           {menus.map((menu, index) => (
-            <Link href={menu.url} key={index}>
+            <Link href={menu.url} key={index} onClick={handleCloseModal}>
               {menu.item}
             </Link>
           ))}
