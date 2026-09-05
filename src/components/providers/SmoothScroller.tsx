@@ -2,10 +2,12 @@
 
 import { useModalStore } from "@/store/ModalStore";
 import ReactLenis, { useLenis } from "lenis/react";
+import { usePathname } from "next/navigation";
 import { useEffect } from "react";
 
 const LenisScrollReset = () => {
   const lenis = useLenis();
+  const path = usePathname();
 
   const { isModalOpen } = useModalStore();
 
@@ -13,7 +15,7 @@ const LenisScrollReset = () => {
     if (!lenis) return;
 
     lenis.scrollTo(0, { immediate: true });
-  }, [lenis]);
+  }, [lenis,path]);
 
   useEffect(() => {
     if (isModalOpen) {
